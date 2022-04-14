@@ -1,5 +1,10 @@
 require 'rails_helper'
 
+def login_user
+  user = FactoryBot.create(:user)
+  login_as(user)
+end
+
 RSpec.feature "Projects", type: :feature do
   context "Create new project" do
     before(:each) do

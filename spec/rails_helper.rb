@@ -9,6 +9,15 @@ abort("The Rails environment is running in production mode!") if Rails.env.produ
 require 'rspec/rails'
 # Add additional requires below this line. Rails is not loaded until this point!
 
+require 'devise'
+require_relative 'support/controller_macros'
+
+RSpec.configure do |config|
+    
+    config.include Devise::Test::ControllerHelpers, :type => :controller
+    config.include FactoryBot::Syntax::Methods
+    config.extend ControllerMacros, :type => :controller
+end
 
 require 'simplecov'
 SimpleCov.start 'rails' do
